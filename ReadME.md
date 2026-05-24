@@ -1,4 +1,4 @@
-# 🛡️ Blue Team Detection Rules
+# Blue Team Detection Rules
 
 > Production-grade detection rules for Linux and Windows — with translations for Elastic SIEM, Splunk, Microsoft Sentinel, and more. MITRE ATT&CK mapped.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 📖 About
+## About
 
 This repository is a structured library of **production-ready detection rules**, built for real SOC environments. Rules are organized by OS platform and translated across major SIEM platforms so you can drop them into your environment without starting from scratch.
 
@@ -53,13 +53,13 @@ detection-rules/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/rehmanwaraich07/detection-rules.git
-cd detection-rules
+git clone https://github.com/rehmanwaraich07/blue-team-detection-rules
+cd blue-team-detection-rules
 ```
 
 ### 2. Navigate to your platform and SIEM
@@ -78,7 +78,7 @@ Each rule file contains the query and a header comment block with full metadata.
 
 ---
 
-## 🔍 Rule Format
+##  Rule Format
 
 Every rule follows this standard structure regardless of SIEM format:
 
@@ -112,7 +112,7 @@ SecurityEvent
 
 ---
 
-## 🗂️ Coverage by Platform
+## Coverage by Platform
 
 ### 🐧 Linux
 
@@ -140,7 +140,7 @@ SecurityEvent
 
 ---
 
-## 🗺️ MITRE ATT&CK Coverage
+##  MITRE ATT&CK Coverage
 
 | Tactic | Techniques Covered |
 |---|---|
@@ -157,7 +157,7 @@ Full coverage matrix: [`mappings/mitre-coverage.md`](mappings/mitre-coverage.md)
 
 ---
 
-## 🛠️ Supported Log Sources
+## Supported Log Sources
 
 | Platform | Log Sources |
 |---|---|
@@ -169,7 +169,7 @@ Full coverage matrix: [`mappings/mitre-coverage.md`](mappings/mitre-coverage.md)
 
 ---
 
-## 📌 Roadmap
+## Roadmap
 
 - [x] Linux — Initial rule set (Sigma, Elastic, Splunk)
 - [x] Windows — Initial rule set (Sigma, Elastic, Splunk, Sentinel)
@@ -182,7 +182,7 @@ Full coverage matrix: [`mappings/mitre-coverage.md`](mappings/mitre-coverage.md)
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome. If you have a detection rule to add or an improvement to an existing one:
 
@@ -197,7 +197,7 @@ See [`docs/contributing.md`](docs/contributing.md) for full guidelines.
 
 ---
 
-## 👤 Author
+## Author
 
 **Misbah** — SOC Analyst | Detection Engineer | Blue Team Content Creator
 
@@ -209,13 +209,13 @@ See [`docs/contributing.md`](docs/contributing.md) for full guidelines.
 
 ---
 
-## 📜 License
+## License
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, adapt, and share these rules — attribution appreciated.
+This project is licensed under the [MIT License](LICENSE). You are free to use, adapt, and share these rules, attribution appreciated.
 
 ---
 
-## ⭐ Support
+## Support
 
 If this repository helped you detect something in your environment or saved you time building detections, consider giving it a star. It helps others in the community find it.
 
