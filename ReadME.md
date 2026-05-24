@@ -202,8 +202,8 @@ See [`docs/contributing.md`](docs/contributing.md) for full guidelines.
 **Misbah** — SOC Analyst | Detection Engineer | Blue Team Content Creator
 
 - 🌐 Portfolio: [defendwithmisbah.vercel.app](https://defendwithmisbah.vercel.app)
-- 💼 LinkedIn: [linkedin.com/in/rehmanwaraich07](https://linkedin.com/in/rehmanwaraich07)
-- ✍️ Medium: [medium.com/@rehmanwaraich107](https://medium.com/@rehmanwaraich107)
+- 💼 LinkedIn: [linkedin.com/in/rehmanwaraich07](https://www.linkedin.com/in/misbah-ur-rehman-8b21103b3/)
+- ✍️ Medium: [medium.com/@rehmanwaraich107](https://medium.com/@rehmanwaraich07)
 - 🐙 GitHub: [github.com/rehmanwaraich07](https://github.com/rehmanwaraich07)
 - 📺 YouTube: [Cyber with Misbah](https://youtube.com/@cyberwithmisbah)
 
