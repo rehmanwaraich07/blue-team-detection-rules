@@ -1,0 +1,28 @@
+title: Registry Run Key Persistence
+id: 4f4c80db-6c34-4b2d-bf3c-1f917a8874d0
+status: experimental
+description: Detects suspicious modification of Run and RunOnce keys for persistence.
+author: Misbah Ur Rehman
+date: 2026-05-24
+references:
+  - https://attack.mitre.org/techniques/T1547/001/
+tags:
+  - attack.persistence
+  - attack.t1547.001
+logsource:
+  product: windows
+  category: registry_set
+detection:
+  selection:
+    TargetObject|contains:
+      - '\Microsoft\Windows\CurrentVersion\Run'
+      - '\Microsoft\Windows\CurrentVersion\RunOnce'
+  filter_legit:
+    Image|endswith:
+      - '\svchost.exe'
+      - '\msiexec.exe'
+  condition: selection and not filter_legit
+falsepositives:
+  - Software installers
+  - Endpoint management tools
+level: medium

@@ -1,0 +1,32 @@
+title: Suspicious Curl or Wget Download
+id: 640dcefd-48d0-4d2c-9774-8e0c9c6f43ab
+status: experimental
+description: Detects suspicious download tooling contacting remote hosts, a common ingress tool transfer pattern.
+author: Misbah Ur Rehman
+date: 2026-05-24
+references:
+  - https://attack.mitre.org/techniques/T1105/
+tags:
+  - attack.command_and_control
+  - attack.t1105
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  filter_legit:
+    CommandLine|contains:
+      - 'apt'
+      - 'apt-get'
+      - 'yum'
+      - 'dnf'
+  selection_suspicious:
+    CommandLine|contains:
+      - '-o /tmp/'
+      - '-o /dev/shm/'
+      - '| bash'
+      - '| sh'
+  condition: selection_tool and selection_remote and not filter_legit
+falsepositives:
+  - System package downloads
+  - Legitimate automation and software installers
+level: medium

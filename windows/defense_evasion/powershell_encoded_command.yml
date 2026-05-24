@@ -1,0 +1,28 @@
+title: Encoded PowerShell Command
+id: 03d08d88-3f02-45d7-9a07-28a1ff3d5c2f
+status: experimental
+description: Detects PowerShell launched with an encoded command or hidden execution context.
+author: Misbah Ur Rehman
+date: 2026-05-24
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+tags:
+  - attack.execution
+  - attack.t1059.001
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_image:
+    Image|endswith: '\powershell.exe'
+  selection_flags:
+    CommandLine|contains:
+      - ' -enc '
+      - ' -encodedcommand '
+      - ' -nop '
+      - ' -w hidden '
+  condition: selection_image and selection_flags
+falsepositives:
+  - Administrative scripts that use encoded content
+  - Some software deployment tools
+level: high
