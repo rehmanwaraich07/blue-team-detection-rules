@@ -1,0 +1,48 @@
+Tables: SecurityEvent, Event
+Connector Required: Windows Security Events via AMA
+
+let SecurityLogCleared =
+SecurityEvent
+| where EventID == 1102
+| extend
+LogCleared      = "Security Audit Log Cleared",
+Actor           = AccountName,
+Domain          = AccountDomain,
+LogonID         = SubjectLogonId;
+let SystemLogCleared =
+Event
+| where EventID == 104
+| where Source == "Microsoft-Windows-Eventlog"
+| extend
+LogCleared  = "System Event Log Cleared",
+Actor       = tostring(EventData),   // parse SubjectUserName from XML if needed
+Domain      = "",
+LogonID     = "";
+SecurityLogCleared
+| union SystemLogCleared
+| project
+TimeGenerated,
+Computer,
+EventID,
+LogCleared,
+Actor,
+Domain,
+LogonID
+| order by TimeGenerated desc
+
+
+----------
+
+// --- SENTINEL ANALYTIC RULE METADATA ---
+// Rule Name        : Windows Event Log Cleared
+// Rule Type        : Scheduled
+// Run Frequency    : Every 5 minutes
+// Lookup Period    : Last 5 minutes
+// Severity         : Critical
+// MITRE Tactic     : Defense Evasion (TA0005)
+// MITRE Technique  : T1070.001
+// Entity Mapping   :
+//   - Account   → Actor
+//   - Host      → Computer
+// Incident Config  : Group all alerts into single incident per host per day
+// Playbook         : Trigger Incident Response playbook on creation

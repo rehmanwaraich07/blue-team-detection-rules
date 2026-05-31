@@ -28,4 +28,3 @@ falsepositives:
   - IT maintenance with prior change ticket
   - Some backup or endpoint management tools (verify against CMDB)
 level: critical
-

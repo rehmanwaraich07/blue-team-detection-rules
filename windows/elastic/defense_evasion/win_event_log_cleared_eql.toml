@@ -1,0 +1,68 @@
+
+Index: winlogbeat-, logs-endpoint.events.,logs-windows.*
+
+Elastic Query: 
+
+any where 
+(
+    event.code == "1102" and 
+    event.provider == "Microsoft-Windows-Secuirty-Auditing"
+)
+or
+(
+    event.code == "104" and 
+    event.provider == "Microsoft-Windows-Eventlog"
+
+)
+
+
+--------------
+
+[rule]
+author = ["Misbah Ur Rehman"]
+description = """
+Detects the clearing of Windows Event Logs. Event ID 1102 is fired when the
+Security audit log is cleared. Event ID 104 fires when the System log is cleared.
+Attackers perform this action to remove evidence of malicious activity post-compromise.
+"""
+false_positives = [
+"Scheduled log rotation by a documented admin script",
+"IT maintenance activities with prior change ticket",
+]
+from = "now-9m"
+index = ["winlogbeat-", "logs-endpoint.events.", "logs-windows.*"]
+language = "eql"
+license = "MIT"
+name = "Windows Event Log Cleared"
+references = [
+"https://attack.mitre.org/techniques/T1070/001/",
+"https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-1102",
+]
+risk_score = 90
+rule_id = "a62b2c23-9e85-4e8d-9f3a-7b2c1a4d6e3f"
+severity = "critical"
+tags = [
+"Defense Evasion",
+"T1070.001",
+"Windows",
+"Cyber with Misbah",
+]
+timestamp_override = "event.ingestion"
+type = "eql"
+
+[[rule.threat]]
+framework = "MITRE ATT&CK"
+[[rule.threat.technique]]
+id = "T1070"
+name = "Indicator Removal"
+reference = "https://attack.mitre.org/techniques/T1070/"
+
+[[rule.threat.technique.subtechnique]]
+id = "T1070.001"
+name = "Clear Windows Event Logs"
+reference = "https://attack.mitre.org/techniques/T1070/001/"
+
+[rule.threat.tactic]
+id = "TA0005"
+name = "Defense Evasion"
+reference = "https://attack.mitre.org/tactics/TA0005/"

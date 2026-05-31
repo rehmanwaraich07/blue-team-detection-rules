@@ -1,0 +1,35 @@
+Index: wineventlog (adjust to your environment)
+
+SPL Qery:
+
+index=wineventlog
+(EventCode=1102)
+OR (EventCode=104 AND Source="Microsoft-Windows-Eventlog")
+| eval LogCleared=case(
+EventCode=1102, "Security Audit Log Cleared",
+EventCode=104,  "System Event Log Cleared",
+true(),         "Unknown"
+)
+| eval Actor=coalesce(SubjectUserName, user, "Unknown")
+| eval Domain=coalesce(SubjectDomainName, "Unknown")
+| eval LogonID=coalesce(SubjectLogonId, "Unknown")
+| table
+_time,
+host,
+EventCode,
+LogCleared,
+Actor,
+Domain,
+LogonID,
+Message
+| sort -_time
+
+
+
+--- SPLUNK ALERT METADATA ---
+Alert Name   : Windows Event Log Cleared
+Alert Type   : Real-time or Scheduled (every 5 minutes recommended)
+Trigger      : Number of results > 0
+Severity     : Critical
+Throttle     : Per host, 1 hour (prevents alert storm on repeated clearing)
+Action       : Notable Event / PagerDuty / SOAR webhook
