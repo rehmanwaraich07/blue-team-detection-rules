@@ -1,6 +1,6 @@
 title: Encoded PowerShell Command
 id: 03d08d88-3f02-45d7-9a07-28a1ff3d5c2f
-status: experimental
+status: Production
 description: Detects PowerShell launched with an encoded command or hidden execution context.
 author: Misbah Ur Rehman
 date: 2026-05-24

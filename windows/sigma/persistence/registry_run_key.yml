@@ -1,6 +1,6 @@
 title: Registry Run Key Persistence
 id: 4f4c80db-6c34-4b2d-bf3c-1f917a8874d0
-status: experimental
+status: Production
 description: Detects suspicious modification of Run and RunOnce keys for persistence.
 author: Misbah Ur Rehman
 date: 2026-05-24
