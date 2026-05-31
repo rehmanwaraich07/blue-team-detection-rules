@@ -15,7 +15,7 @@ Event
 | where Source == "Microsoft-Windows-Eventlog"
 | extend
 LogCleared  = "System Event Log Cleared",
-Actor       = tostring(EventData),   // parse SubjectUserName from XML if needed
+Actor = extract(@"<Data Name='SubjectUserName'>([^<]+)", 1, tostring(EventData))
 Domain      = "",
 LogonID     = "";
 SecurityLogCleared

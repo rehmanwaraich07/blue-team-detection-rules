@@ -1,9 +1,9 @@
 title: LSASS Process Access From Suspicious Source
 id: 8d2b1b23-4f7f-4dc2-a8ac-9f5ed9d2db11
-status: Production
+status: production
 description: Detects suspicious process access to LSASS that may indicate credential dumping.
 author: Misbah Ur Rehman
-date: 2026-05-24
+date: 2026/05/24
 references:
   - https://attack.mitre.org/techniques/T1003/001/
 tags:

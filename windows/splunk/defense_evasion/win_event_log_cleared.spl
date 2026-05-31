@@ -1,6 +1,6 @@
 Index: wineventlog (adjust to your environment)
 
-SPL Qery:
+SPL Query:
 
 index=wineventlog
 (EventCode=1102)

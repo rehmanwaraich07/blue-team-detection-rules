@@ -6,7 +6,7 @@ Elastic Query:
 any where 
 (
     event.code == "1102" and 
-    event.provider == "Microsoft-Windows-Secuirty-Auditing"
+    event.provider == "Microsoft-Windows-Security-Auditing"
 )
 or
 (
@@ -30,7 +30,7 @@ false_positives = [
 "IT maintenance activities with prior change ticket",
 ]
 from = "now-9m"
-index = ["winlogbeat-", "logs-endpoint.events.", "logs-windows.*"]
+index = ["winlogbeat-*", "logs-endpoint.events.*", "logs-windows.*"]
 language = "eql"
 license = "MIT"
 name = "Windows Event Log Cleared"
